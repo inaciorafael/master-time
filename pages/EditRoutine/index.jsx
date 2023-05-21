@@ -70,117 +70,117 @@ const EditRoutine = () => {
   }, [])
 
   return (
-    < ScrollView
-      contentContainerStyle={styles.container}
-    >
-      <Text style={styles.title}>{params.type === 'new' ? 'Cadastre uma nova rotina' : 'Altere os dados da sua rotina'}</Text>
-      <Space vertical={30} />
-      <Text style={styles.infoText}>Dê um nome a sua rotina</Text>
-      <Space vertical={10} />
-      <TextInput
-        onChangeText={setName}
-        value={name}
-        placeholder="Nome da rotina"
-        placeholderTextColor="#0004"
-        style={{
-          backgroundColor: theme.primaryColor,
+    <View style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Text style={styles.title}>{params.type === 'new' ? 'Cadastre uma nova rotina' : 'Altere os dados da sua rotina'}</Text>
+        <Space vertical={15} />
+        <Text style={styles.infoText}>Dê um nome a sua rotina</Text>
+        <Space vertical={10} />
+        <TextInput
+          onChangeText={setName}
+          value={name}
+          placeholder="Nome da rotina"
+          placeholderTextColor="#0004"
+          style={{
+            backgroundColor: theme.primaryColor,
+            width: '100%',
+            fontSize: s(16),
+            padding: s(10),
+            borderRadius: s(10),
+          }}
+        />
+        <Space vertical={10} />
+        <Text style={styles.infoText}>Defina o tempo de atividade</Text>
+        <Space vertical={5} />
+        <View style={{ flexDirection: 'row' }}>
+          <View style={{ flex: 1, ...globalStyles.center }}>
+            <Text style={{ ...styles.infoText, color: theme.secondaryColor }}>Minutos</Text>
+          </View>
+          <View style={{ flex: 1, ...globalStyles.center }}>
+            <Text style={{ ...styles.infoText, color: theme.secondaryColor }}>Segundos</Text>
+          </View>
+        </View>
+
+        <Space vertical={5} />
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={{ flex: 1, ...globalStyles.center }}>
+            <TextInput
+              style={styles.timeInput}
+              maxLength={2}
+              placeholderTextColor="#0004"
+              placeholder="M"
+              value={uptimeMinutes}
+              onChangeText={setUptimeMinutes}
+              keyboardType="numeric"
+            />
+          </View>
+          <Text style={{ color: theme.primaryColor, fontWeight: 'bold', fontSize: s(50) }}>:</Text>
+          <View style={{ flex: 1, ...globalStyles.center }}>
+            <TextInput
+              style={styles.timeInput}
+              placeholderTextColor="#0004"
+              placeholder="S"
+              value={uptimeSeconds}
+              onChangeText={setUptimeSeconds}
+              maxLength={2}
+              keyboardType="numeric"
+            />
+          </View>
+        </View>
+
+
+        <Space vertical={10} />
+        <Text style={styles.infoText}>Defina o tempo de descanso</Text>
+        <Space vertical={5} />
+        <View style={{ flexDirection: 'row' }}>
+          <View style={{ flex: 1, ...globalStyles.center }}>
+            <Text style={{ ...styles.infoText, color: theme.secondaryColor }}>Minutos</Text>
+          </View>
+          <View style={{ flex: 1, ...globalStyles.center }}>
+            <Text style={{ ...styles.infoText, color: theme.secondaryColor }}>Segundos</Text>
+          </View>
+        </View>
+
+        <Space vertical={5} />
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={{ flex: 1, ...globalStyles.center }}>
+            <TextInput
+              style={styles.timeInput}
+              maxLength={2}
+              placeholderTextColor="#0004"
+              placeholder="M"
+              value={restTimeMinutes}
+              onChangeText={setRestTimeMinutes}
+              keyboardType="numeric"
+            />
+          </View>
+          <Text style={{ color: theme.primaryColor, fontWeight: 'bold', fontSize: s(50) }}>:</Text>
+          <View style={{ flex: 1, ...globalStyles.center }}>
+            <TextInput
+              style={styles.timeInput}
+              maxLength={2}
+              placeholder="S"
+              value={restTimeSeconds}
+              onChangeText={setRestTimeSeconds}
+              placeholderTextColor="#0004"
+              keyboardType="numeric"
+            />
+          </View>
+        </View>
+
+        <Space vertical={10} />
+        <TouchableOpacity onPress={handleAddRoutine} style={{
+          backgroundColor: theme.appActionColor,
+          paddingVertical: s(10),
           width: '100%',
-          fontSize: s(16),
-          padding: s(10),
+          alignItems: 'center',
+          justifyContent: 'center',
           borderRadius: s(10),
-        }}
-      />
-      <Space vertical={30} />
-      <Text style={styles.infoText}>Defina o tempo de atividade</Text>
-      <Space vertical={10} />
-      <View style={{ flexDirection: 'row' }}>
-        <View style={{ flex: 1, ...globalStyles.center }}>
-          <Text style={{ ...styles.infoText, color: theme.secondaryColor }}>Minutos</Text>
-        </View>
-        <View style={{ flex: 1, ...globalStyles.center }}>
-          <Text style={{ ...styles.infoText, color: theme.secondaryColor }}>Segundos</Text>
-        </View>
-      </View>
-
-      <Space vertical={10} />
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <View style={{ flex: 1, ...globalStyles.center }}>
-          <TextInput
-            style={styles.timeInput}
-            maxLength={2}
-            placeholderTextColor="#0004"
-            placeholder="M"
-            value={uptimeMinutes}
-            onChangeText={setUptimeMinutes}
-            keyboardType="numeric"
-          />
-        </View>
-        <Text style={{ color: theme.primaryColor, fontWeight: 'bold', fontSize: s(50) }}>:</Text>
-        <View style={{ flex: 1, ...globalStyles.center }}>
-          <TextInput
-            style={styles.timeInput}
-            placeholderTextColor="#0004"
-            placeholder="S"
-            value={uptimeSeconds}
-            onChangeText={setUptimeSeconds}
-            maxLength={2}
-            keyboardType="numeric"
-          />
-        </View>
-      </View>
-
-
-      <Space vertical={30} />
-      <Text style={styles.infoText}>Defina o tempo de descanso</Text>
-      <Space vertical={10} />
-      <View style={{ flexDirection: 'row' }}>
-        <View style={{ flex: 1, ...globalStyles.center }}>
-          <Text style={{ ...styles.infoText, color: theme.secondaryColor }}>Minutos</Text>
-        </View>
-        <View style={{ flex: 1, ...globalStyles.center }}>
-          <Text style={{ ...styles.infoText, color: theme.secondaryColor }}>Segundos</Text>
-        </View>
-      </View>
-
-      <Space vertical={10} />
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <View style={{ flex: 1, ...globalStyles.center }}>
-          <TextInput
-            style={styles.timeInput}
-            maxLength={2}
-            placeholderTextColor="#0004"
-            placeholder="M"
-            value={restTimeMinutes}
-            onChangeText={setRestTimeMinutes}
-            keyboardType="numeric"
-          />
-        </View>
-        <Text style={{ color: theme.primaryColor, fontWeight: 'bold', fontSize: s(50) }}>:</Text>
-        <View style={{ flex: 1, ...globalStyles.center }}>
-          <TextInput
-            style={styles.timeInput}
-            maxLength={2}
-            placeholder="S"
-            value={restTimeSeconds}
-            onChangeText={setRestTimeSeconds}
-            placeholderTextColor="#0004"
-            keyboardType="numeric"
-          />
-        </View>
-      </View>
-
-      <Space vertical={30} />
-      <TouchableOpacity onPress={handleAddRoutine} style={{
-        backgroundColor: theme.appActionColor,
-        paddingVertical: s(10),
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: s(10),
-      }}>
-        <Text style={{ color: theme.primaryColor, fontSize: s(15), fontWeight: 'bold' }}>Salvar Rotina</Text>
-      </TouchableOpacity>
-    </ScrollView >
+        }}>
+          <Text style={{ color: theme.primaryColor, fontSize: s(15), fontWeight: 'bold' }}>SALVAR ROTINA</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </View>
   )
 }
 

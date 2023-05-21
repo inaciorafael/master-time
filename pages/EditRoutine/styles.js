@@ -7,7 +7,6 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.backgroundColor,
-    padding: s(20),
     alignItems: 'center',
   },
   title: {
@@ -22,7 +21,7 @@ export default StyleSheet.create({
   },
   timeInput: {
     backgroundColor: theme.primaryColor,
-    padding: s(20),
+    padding: s(10),
     borderRadius: s(10),
     fontSize: s(30),
     width: '50%',

@@ -45,7 +45,7 @@ const Timer = () => {
   }, [timerStatus, timerType])
 
 
-  const playActiveTimerSong = async () => {
+  const playStartTimerSong = async () => {
     const { sound } = await Audio.Sound.createAsync(require('../../assets/sounds/boxing-bell-1.mp3'));
 
     setActiveSound(sound)
@@ -53,7 +53,7 @@ const Timer = () => {
     await sound.playAsync()
   }
 
-  const playRestTimerSong = async () => {
+  const playAlertTimerSong = async () => {
     const { sound } = await Audio.Sound.createAsync(require('../../assets/sounds/boxing-bell-3.mp3'));
 
     setRestSound(sound)
@@ -62,9 +62,13 @@ const Timer = () => {
   }
 
   useEffect(() => {
+    if (upTime === 10 || restTime === 10) {
+      playAlertTimerSong()
+    }
+
     if (upTime === 0) {
       setTimerStatus('paused')
-      playRestTimerSong()
+      playStartTimerSong()
 
       setTimeout(() => {
         setUpTime(params.upTime.minutes * 60 + params.upTime.seconds)
@@ -75,7 +79,7 @@ const Timer = () => {
 
     if (restTime === 0) {
       setTimerStatus('paused')
-      playActiveTimerSong()
+      playStartTimerSong()
 
       setTimeout(() => {
         setRestTime(params.restTime.minutes * 60 + params.restTime.seconds)
@@ -157,7 +161,7 @@ const Timer = () => {
           {timerStatus === 'paused' ? (
             <>
               <TouchableOpacity onPress={() => {
-                playActiveTimerSong()
+                playStartTimerSong()
                 setTimeout(() => {
                   setTimerStatus('playing')
                 }, 1000)

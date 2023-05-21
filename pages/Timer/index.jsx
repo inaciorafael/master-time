@@ -65,9 +65,9 @@ const Timer = () => {
     if (upTime === 0) {
       setTimerStatus('paused')
       playRestTimerSong()
-      setUpTime(params.upTime.minutes * 60 + params.upTime.seconds)
 
       setTimeout(() => {
+        setUpTime(params.upTime.minutes * 60 + params.upTime.seconds)
         setTimerStatus('playing')
         setTimerType('rest')
       }, 5000)
@@ -76,9 +76,9 @@ const Timer = () => {
     if (restTime === 0) {
       setTimerStatus('paused')
       playActiveTimerSong()
-      setRestTime(params.restTime.minutes * 60 + params.restTime.seconds)
 
       setTimeout(() => {
+        setRestTime(params.restTime.minutes * 60 + params.restTime.seconds)
         setTimerStatus('playing')
         setRound(prevState => prevState + 1)
         setTimerType('uptime')
@@ -143,7 +143,7 @@ const Timer = () => {
   return (
     <View style={styles.container}>
       <View style={styles.timerContainer}>
-        <Text style={styles.roundTitle}><Text style={{ fontSize: s(60), fontWeight: 'bold' }}>{round}º</Text> Round</Text>
+        <Text style={styles.roundTitle}><Text style={{ fontSize: s(60), fontWeight: 'bold' }}>{round}{timerType === 'rest' ? `|${round + 1}` : null}º</Text> Round</Text>
         <Text style={styles.timer}>{getTimer('minutes')}<Text style={styles.timerDots}>:</Text>{getTimer('seconds')}</Text>
         <View style={{ flexDirection: 'row', gap: s(20) }}>
           <Text style={{ ...styles.timerInTraining, backgroundColor: theme.trafficLightInTraining, opacity: isCurrentTimerActive('uptime') ? 1 : 0.2 }}>Em treino</Text>

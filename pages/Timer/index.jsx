@@ -51,6 +51,9 @@ const Timer = () => {
     setActiveSound(sound)
 
     await sound.playAsync()
+    setTimeout(() => {
+      sound.unloadAsync()
+    }, 2000)
   }
 
   const playAlertTimerSong = async () => {
@@ -59,10 +62,17 @@ const Timer = () => {
     setRestSound(sound)
 
     await sound.playAsync()
+    setTimeout(() => {
+      sound.unloadAsync()
+    }, 2000)
   }
 
   useEffect(() => {
-    if (upTime === 10 || restTime === 10) {
+    if (upTime === 10 && timerType === 'uptime') {
+      playAlertTimerSong()
+    }
+
+    if (restTime === 10 && timerType === 'rest') {
       playAlertTimerSong()
     }
 

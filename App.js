@@ -1,11 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
 
-import Routes from './routes'
-import { theme } from './styles';
+import { useKeepAwake } from "expo-keep-awake";
+
+import Routes from "./routes";
+import { theme } from "./styles";
 
 export default function App() {
+  useKeepAwake();
+
   return (
     <NavigationContainer>
       <Routes />

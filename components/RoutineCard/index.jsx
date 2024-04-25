@@ -90,7 +90,7 @@ const RoutineCard = (props) => {
                   },
                 ]}
               >
-                {getUptimeRoutine()}
+                {getRestimeRoutine()}
               </Text>
             </View>
           </View>
